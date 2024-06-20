@@ -6,12 +6,12 @@ data "azurerm_resources" "vms" {
 
 }
 
-output "list_vms" {
+output "list_vms_one" {
   value = data.azurerm_resources.vms
 
 }
 
-output "results_vms" {
+output "results_vms_one" {
   value = {
     total_machines = length(data.azurerm_resources.vms.resources)
     tag_environemt = [for i in data.azurerm_resources.vms.resources : i.tags if length(i.tags) != 0]
@@ -28,12 +28,12 @@ data "azurerm_resources" "vnets" {
 
 }
 
-output "list_vnets" {
+output "list_vnets_one" {
   value = data.azurerm_resources.vnets
 
 }
 
-output "results_vnets" {
+output "results_vnets_one" {
   value = {
     total_vnets = length(data.azurerm_resources.vnets.resources)
     names       = [for i in data.azurerm_resources.vnets.resources : i.name]
